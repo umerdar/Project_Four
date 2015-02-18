@@ -13,4 +13,20 @@ get ('/') do
   File.read('./public/index.html')
 end
 
+get ('/users/new') do
+  # render form
+end
+
+post ('/users') do
+new_user = User.create(params)
+# user = User.last.id
+redirect to "users/#{new_user.id}"
+end
+
+get ('users/:id') do
+user = User.find(params["id"])
+end
+
+
+
 

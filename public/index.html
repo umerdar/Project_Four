@@ -36,13 +36,20 @@
     <div class="row">
       <div class="12 columns" style="margin-top: 25%">
         <h1>Let's Start your Perfday!</h1>
-        <p>This index</p>
+  <div class="login">
+    <form method='POST' action='/users'>
+      <input class='inputbox' type="text" name="email" placeholder="Email" required="required" />
+        <input class='inputbox' type="password" name="password" placeholder="Password" required="required" />
+        <button class="button-primary" type="submit" id="loginbutton">Log In</button>
+
+    </form>
+  </div>
       </div>
     </div>
 
   <div>
 <form method='GET' action='/users/new'>
-    <button class="button primary" id='signup'>New User?</button>
+    <button class="button-primary" id='signup'>New User?</button>
   </form>
   </div>
 </center>
