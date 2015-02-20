@@ -24,7 +24,10 @@ post '/sessions' do
   end
 end
 
-
+post '/sessions/destroy' do
+  session.clear
+  redirect '/'
+end
 
 
 get ('/users/:user_id/categories/:category_id') do
@@ -33,11 +36,11 @@ get ('/users/:user_id/categories/:category_id') do
 end
 
 get ('/') do
-  # if session[:user_id] != nil
-  #   redirect_to '/users'
-  # else
+  if session[:user_id] != nil
+    redirect "/users/#{session[:user_id]}"
+  else
   File.read('./public/index.html')
-  # end
+  end
 end
 
 get ('/users/new') do
@@ -54,14 +57,15 @@ end
 # end
 
 get ('/users/:id/activities') do
-  # if session[:user_id] != nil
+
+if session[:user_id] != nil
 @user = User.find(params["id"])
 # @activity = Activity.find(params["activity_id"])
  render(:erb, :user_activities) #you have to render it so it can be read. In rails, that's automatic. talk about how the @ sign in rails makes it so you don't have to render, but maybe you also have to render user: user if you had "user" instead of "@user". What's the difference????
 
-  # else
-  #    redirect_to '/'
-  #  end
+  else
+     redirect_to '/'
+  end
 end
 
 get '/users/:id' do

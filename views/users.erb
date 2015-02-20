@@ -38,15 +38,24 @@
         <h1>Hi <%= @user.name %>
         <h2>Would you like to...</h1>
         <br>
-        <h3><a href="/users/:id/categories">Plan your day out?</a></h3>
+        <h3><a href="/categories">Plan your day out?</a></h3>
         <br>
-        <h3><a href="/users/:id/categories">Be Spontaneous and go through one activity at a time?</h3>
+        <h3><a href="/categories">Be Spontaneous and go through one activity at a time?</h3>
         <br>
         <h3><a href="/users/:id/activities/:activity_id">Or view your current plans?</h3>
       </div>
     </div>
   <div>
-</center>
+
+<div class="container">
+  <div class="row">
+     <div class="12 columns" style="margin-top: 25%">
+      <form action='/sessions/destroy' method="POST">
+      <button id="logout">Log Out</button>
+    </form>
+  </div>
+ </div>
+</div>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
