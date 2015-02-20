@@ -53,21 +53,6 @@ new_user = User.create({name: params["name"], email: params["email"], password: 
 redirect "users/#{new_user.id}"
 end
 
-# get ('/users') do
-# end
-
-get ('/users/:id/activities') do
-
-if session[:user_id] != nil
-@user = User.find(params["id"])
-# @activity = Activity.find(params["activity_id"])
- render(:erb, :user_activities) #you have to render it so it can be read. In rails, that's automatic. talk about how the @ sign in rails makes it so you don't have to render, but maybe you also have to render user: user if you had "user" instead of "@user". What's the difference????
-
-  else
-     redirect_to '/'
-  end
-end
-
 get '/users/:id' do
 @user = User.find(params["id"])
  render(:erb, :users)
@@ -76,18 +61,33 @@ get '/users/:id' do
 # 3
 end
 
+get ('/users/:id/activities') do
+
+  if session[:user_id] != nil
+  @user = User.find(params["id"])
+# @activity = Activity.find(params["activity_id"])
+ render(:erb, :user_activities) #you have to render it so it can be read. In rails, that's automatic. talk about how the @ sign in rails makes it so you don't have to render, but maybe you also have to render user: user if you had "user" instead of "@user". What's the difference????
+
+  else
+     redirect '/'
+  end
+end
+
+
 get '/categories' do
 
 @category = Category.all
 # binding.pry
 render(:erb, :categories)
 
+# redirect '/categoryredirect'
+
 end
 
 post '/categoryredirect' do
-# @category = Category.find_by(params["id"])
-
-redirect "/categories/#{params['category-id']}"
+@category = Category.find_by(params["id"])
+binding.pry
+# redirect "/categories/#{params['category-id']}"
 end
 
 get '/categories/:id' do
