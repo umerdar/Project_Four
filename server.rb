@@ -86,7 +86,7 @@ end
 
 post '/categoryredirect' do
 @category = Category.find_by(params["id"])
-binding.pry
+# binding.pry
 # redirect "/categories/#{params['category-id']}"
 end
 
